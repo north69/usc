@@ -13,10 +13,6 @@ class SquarePainter extends Painter {
 	}
 
 	protected function createShape(): Shape {
-		$square = new Square($this->width);
-		$square
-			->setColor($this->color)
-			->setBorderSize($this->border_size);
-		return $square;
+		return new Square($this->width);
 	}
 }
