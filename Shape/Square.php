@@ -1,25 +1,18 @@
 <?php
 namespace USC\Shape;
 
-class Square implements Shape {
+use USC\Visitor\Visitor;
+
+class Square extends Shape {
 
 	private $width;
 
 	private $border_size;
 	private $color;
 
-	public function __construct(float $width) {
+	public function __construct(float $width)
+    {
 		$this->width = $width;
-	}
-
-	public function setBorderSize(float $border_size): Shape {
-		$this->border_size = $border_size;
-		return $this;
-	}
-
-	public function setColor(string $color): Shape {
-		$this->color = $color;
-		return $this;
 	}
 
 	public function printArrayOfPoints() {
@@ -29,4 +22,14 @@ class Square implements Shape {
 	public function createImage() {
 		print("Creating an image of square with width = {$this->width}, color = {$this->color} and border size = {$this->border_size}.\n");
 	}
+
+    public function getWidth(): float
+    {
+        return $this->width;
+    }
+
+    public function accept(Visitor $visitor)
+    {
+        $visitor->visitSquare($this);
+    }
 }
