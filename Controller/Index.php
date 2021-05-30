@@ -1,7 +1,6 @@
 <?php
 namespace USC\Controller;
 
-
 use USC\Visitor\ArrayOfPoints;
 use USC\Visitor\Image;
 use USC\Shape\Circle;
@@ -9,7 +8,8 @@ use USC\Shape\Square;
 
 class Index {
 
-	public function testAction() {
+	public function testAction()
+    {
 		$circle = new Circle(10);
 		$circle
 			->setColor('#fff')

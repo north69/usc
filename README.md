@@ -4,24 +4,27 @@ The service is able to draw geometric shapes (circle and square).
 
 ## Code example
 ```php
-$circle_painter = new CirclePainter(10);
-$circle_painter
+$circle = new Circle(10);
+$circle
     ->setColor('#fff')
     ->setBorderSize(2);
-$circle_painter->printArrayOfPoints();
+$array_of_points_visitor = new ArrayOfPoints();
+$image_visitor = new Image();
+
+$circle->accept($array_of_points_visitor);
+
+print('\n\n');
+$circle->accept($image_visitor);
 print('\n\n');
 
-$circle_painter->createImage();
-print('\n\n');
-
-$square_painter = new SquarePainter(14.5);
-$square_painter
+$square = new Square(14.5);
+$square
     ->setBorderSize(0)
     ->setColor('#000');
-$square_painter->printArrayOfPoints();
+$square->accept($array_of_points_visitor);
 print('\n\n');
 
-$square_painter->createImage();
+$square->accept($image_visitor);
 
 ```
 
